@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Your Cart - NovaCart</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* =========================
+           CART PAGE
+        ========================= */
+
+        .cart-page {
+            width: 88%;
+            margin: 50px auto 100px;
+        }
+
+        .cart-header {
+            margin-bottom: 35px;
+        }
+
+        .cart-header p {
+            color: #6c4cff;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .cart-header h1 {
+            font-size: 42px;
+            letter-spacing: -2px;
+        }
+
+        .cart-layout {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+            align-items: start;
+        }
+
+        /* =========================
+           CART ITEMS
+        ========================= */
+
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 120px 1fr auto;
+            gap: 20px;
+            align-items: center;
+
+            padding: 18px;
+
+            background: white;
+
+            border: 1px solid #e8e8e8;
+
+            border-radius: 18px;
+
+            transition: 0.25s;
+        }
+
+        .cart-item:hover {
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.07);
+        }
+
+        .cart-item-image {
+            width: 120px;
+            height: 120px;
+
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            background: #f5f5f6;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+        .cart-item-info h3 {
+            font-size: 17px;
+            margin-bottom: 7px;
+        }
+
+        .cart-item-info p {
+            color: #777;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .cart-item-price {
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        /* =========================
+           QUANTITY
+        ========================= */
+
+        .quantity-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            margin-top: 12px;
+        }
+
+        .quantity-box button {
+            width: 32px;
+            height: 32px;
+
+            border-radius: 8px;
+
+            background: #f1f1f3;
+
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .quantity-box button:hover {
+            background: #6c4cff;
+            color: white;
+        }
+
+        .quantity-box span {
+            min-width: 20px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        /* =========================
+           ITEM TOTAL / REMOVE
+        ========================= */
+
+        .cart-item-actions {
+            text-align: right;
+        }
+
+        .item-total {
+            font-size: 18px;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .remove-btn {
+            background: transparent;
+            color: #d33;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .remove-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================
+           ORDER SUMMARY
+        ========================= */
+
+        .cart-summary {
+            position: sticky;
+            top: 100px;
+
+            padding: 25px;
+
+            background: white;
+
+            border: 1px solid #e8e8e8;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        .cart-summary h2 {
+            font-size: 21px;
+            margin-bottom: 25px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+
+            padding: 12px 0;
+
+            font-size: 14px;
+
+            color: #666;
+
+            border-bottom: 1px solid #eee;
+        }
+
+        .summary-row strong {
+            color: #111;
+        }
+
+        .summary-total {
+            display: flex;
+            justify-content: space-between;
+
+            margin-top: 18px;
+            margin-bottom: 20px;
+
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            height: 50px;
+
+            border-radius: 11px;
+
+            background: #111;
+            color: white;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            transition: 0.25s;
+        }
+
+        .checkout-btn:hover {
+            background: #6c4cff;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 25px rgba(108, 76, 255, 0.2);
+        }
+
+        /* =========================
+           EMPTY CART
+        ========================= */
+
+        .empty-cart {
+            display: none;
+
+            padding: 70px 20px;
+
+            background: white;
+
+            border: 1px solid #e8e8e8;
+
+            border-radius: 20px;
+
+            text-align: center;
+        }
+
+        .empty-cart-icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .empty-cart h2 {
+            margin-bottom: 10px;
+        }
+
+        .empty-cart p {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .shop-btn {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            height: 45px;
+
+            padding: 0 20px;
+
+            border-radius: 10px;
+
+            background: #111;
+            color: white;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .shop-btn:hover {
+            background: #6c4cff;
+        }
+
+        /* =========================
+           LOADING
+        ========================= */
+
+        .cart-loading {
+            padding: 60px;
+            text-align: center;
+
+            color: #777;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .cart-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .cart-summary {
+                position: static;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .cart-page {
+                width: 94%;
+            }
+
+            .cart-header h1 {
+                font-size: 34px;
+            }
+
+            .cart-item {
+                grid-template-columns: 85px 1fr;
+                gap: 14px;
+            }
+
+            .cart-item-image {
+                width: 85px;
+                height: 85px;
+            }
+
+            .cart-item-actions {
+                grid-column: 2;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <div class="logo">
+            NovaCart
+        </div>
+
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                placeholder="Search products..."
+                id="searchInput"
+            >
+
+            <button id="searchBtn">
+                Search
+            </button>
+
+        </div>
+
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="shop.html">
+                Shop
+            </a>
+
+            <a href="orders.html">
+                Orders
+            </a>
+
+            <a href="profile.html">
+                Profile
+            </a>
+
+            <a href="cart.html">
+                🛒 Cart
+                <span id="cartCount">0</span>
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         CART
+    ========================= -->
+
+    <main class="cart-page">
+
+        <div class="cart-header">
+
+            <p>SHOPPING CART</p>
+
+            <h1>
+                Your Cart
+            </h1>
+
+        </div>
+
+
+        <div class="cart-layout">
+
+
+            <!-- =====================
+                 LEFT SIDE
+            ====================== -->
+
+            <section>
+
+                <div
+                    id="cartItems"
+                    class="cart-items"
+                >
+
+                    <!--
+                        Cart items
+                        JavaScript/API se
+                        yahan aayenge.
+                    -->
+
+                    <div class="cart-loading">
+                        Loading cart...
+                    </div>
+
+                </div>
+
+
+                <!-- Empty Cart -->
+
+                <div
+                    id="emptyCart"
+                    class="empty-cart"
+                >
+
+                    <div class="empty-cart-icon">
+                        🛒
+                    </div>
+
+                    <h2>
+                        Your cart is empty
+                    </h2>
+
+                    <p>
+                        Looks like you haven't
+                        added anything yet.
+                    </p>
+
+                    <a
+                        href="shop.html"
+                        class="shop-btn"
+                    >
+                        Start Shopping
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================
+                 RIGHT SIDE
+            ====================== -->
+
+            <aside class="cart-summary">
+
+                <h2>
+                    Order Summary
+                </h2>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Items
+                    </span>
+
+                    <strong id="summaryItems">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <strong id="subtotal">
+                        ₹0.00
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Shipping
+                    </span>
+
+                    <strong id="shipping">
+                        FREE
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="grandTotal">
+                        ₹0.00
+                    </strong>
+
+                </div>
+
+
+                <button
+                    class="checkout-btn"
+                    id="checkoutBtn"
+                >
+                    Proceed to Checkout →
+                </button>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <div class="footer-brand">
+
+            <h2>
+                NovaCart
+            </h2>
+
+            <p>
+                Your modern online shopping destination.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <div>
+
+                <h3>Shop</h3>
+
+                <a href="shop.html">
+                    All Products
+                </a>
+
+                <a href="#">
+                    Mobiles
+                </a>
+
+                <a href="#">
+                    Laptops
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>Account</h3>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+                <a href="register.html">
+                    Register
+                </a>
+
+                <a href="orders.html">
+                    My Orders
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>Help</h3>
+
+                <a href="#">
+                    Contact
+                </a>
+
+                <a href="#">
+                    Shipping
+                </a>
+
+                <a href="#">
+                    Returns
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            © 2026 NovaCart. All rights reserved.
+
+        </div>
+
+    </footer>
+
+
+    <!-- Cart JavaScript -->
+    <script src="js/cart.js"></script>
+
+</body>
+
+</html>

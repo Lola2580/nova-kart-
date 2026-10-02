@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Product Details - NovaCart</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/product-details.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <div class="logo">
+            NovaCart
+        </div>
+
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search products..."
+            >
+
+            <button
+                type="button"
+                id="searchBtn"
+            >
+                Search
+            </button>
+
+        </div>
+
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="shop.html">
+                Shop
+            </a>
+
+            <a href="wishlist.html">
+                ♥ Wishlist
+                <span id="wishlistCount">
+                    0
+                </span>
+            </a>
+
+            <a href="orders.html">
+                Orders
+            </a>
+
+            <a href="profile.html">
+                Profile
+            </a>
+
+            <a href="cart.html">
+                🛒 Cart
+                <span id="cartCount">
+                    0
+                </span>
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================
+         PRODUCT DETAILS
+    ========================== -->
+
+    <main class="product-details-page">
+
+
+        <!-- =====================
+             PRODUCT TOP
+        ====================== -->
+
+        <section class="product-details-top">
+
+
+            <!-- =================
+                 MEDIA
+            ================== -->
+
+            <div class="product-media-section">
+
+
+                <div
+                    class="product-media-wrapper"
+                >
+
+                    <button
+                        type="button"
+                        class="
+                            media-arrow
+                            media-prev
+                        "
+                        id="mediaPrev"
+                    >
+                        ←
+                    </button>
+
+
+                    <div
+                        id="productMedia"
+                        class="
+                            product-media-track
+                        "
+                    >
+
+                        <div
+                            class="
+                                product-media-item
+                            "
+                        >
+
+                            <img
+                                src="https://via.placeholder.com/600x600?text=Product"
+                                alt="Product"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="
+                            media-arrow
+                            media-next
+                        "
+                        id="mediaNext"
+                    >
+                        →
+                    </button>
+
+                </div>
+
+
+
+                <!-- MEDIA DOTS -->
+
+                <div
+                    id="mediaDots"
+                    class="media-dots"
+                ></div>
+
+
+            </div>
+
+
+
+            <!-- =================
+                 PRODUCT INFO
+            ================== -->
+
+            <div class="product-info-section">
+
+
+                <!-- WISHLIST / SHARE -->
+
+                <div
+                    class="product-top-actions"
+                >
+
+                    <button
+                        type="button"
+                        id="wishlistBtn"
+                        class="product-icon-btn"
+                        title="Add to Wishlist"
+                    >
+                        ♡
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="shareBtn"
+                        class="product-icon-btn"
+                        title="Share"
+                    >
+                        ↗
+                    </button>
+
+                </div>
+
+
+
+                <!-- CATEGORY -->
+
+                <p
+                    id="productCategory"
+                    class="product-category"
+                >
+                    PRODUCT
+                </p>
+
+
+
+                <!-- TITLE -->
+
+                <h1
+                    id="productName"
+                    class="product-name"
+                >
+                    Loading Product...
+                </h1>
+
+
+
+                <!-- RATING -->
+
+                <div
+                    class="product-rating-row"
+                >
+
+                    <span
+                        id="productRating"
+                        class="product-rating"
+                    >
+                        ★ 0.0
+                    </span>
+
+
+                    <span
+                        id="productReviews"
+                        class="product-reviews"
+                    >
+                        0 ratings
+                    </span>
+
+                </div>
+
+
+
+                <div
+                    class="product-divider"
+                ></div>
+
+
+
+                <!-- =================
+                     SELECT COLOR
+                ================== -->
+
+                <section
+                    id="colorSection"
+                    class="
+                        product-option-section
+                    "
+                    style="display: none;"
+                >
+
+                    <div
+                        class="option-title-row"
+                    >
+
+                        <h3>
+                            Select Color
+                        </h3>
+
+                        <span
+                            id="selectedColorName"
+                        >
+                            —
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        id="colorOptions"
+                        class="
+                            color-options
+                        "
+                    ></div>
+
+                </section>
+
+
+
+                <!-- =================
+                     SELECT VARIANT
+                ================== -->
+
+                <section
+                    id="variantSection"
+                    class="
+                        product-option-section
+                    "
+                    style="display: none;"
+                >
+
+                    <div
+                        class="option-title-row"
+                    >
+
+                        <h3>
+                            Select Variant
+                        </h3>
+
+                    </div>
+
+
+                    <div
+                        id="variantOptions"
+                        class="
+                            variant-options
+                        "
+                    ></div>
+
+                </section>
+
+
+
+                <!-- =================
+                     PRICE
+                ================== -->
+
+                <div
+                    class="product-price-section"
+                >
+
+                    <div
+                        id="productDiscount"
+                        class="
+                            product-discount
+                        "
+                    >
+                        --
+                    </div>
+
+
+                    <span
+                        id="originalPrice"
+                        class="
+                            original-price
+                        "
+                    >
+                        ₹0
+                    </span>
+
+
+                    <strong
+                        id="productPrice"
+                        class="
+                            current-price
+                        "
+                    >
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+
+                <!-- SHORT DESCRIPTION -->
+
+                <p
+                    id="productDescription"
+                    class="
+                        product-short-description
+                    "
+                >
+                    Loading product description...
+                </p>
+
+
+
+                <!-- =================
+                     ACTIONS
+                ================== -->
+
+                <div
+                    class="product-action-buttons"
+                >
+
+                    <button
+                        type="button"
+                        id="addToCartBtn"
+                        class="
+                            product-action-btn
+                            add-cart-btn
+                        "
+                    >
+                        Add to Cart
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="buyNowBtn"
+                        class="
+                            product-action-btn
+                            buy-now-btn
+                    "
+                    >
+                        Buy Now
+                    </button>
+
+                </div>
+
+
+
+                <!-- STOCK -->
+
+                <div
+                    id="stockInfo"
+                    class="stock-info"
+                >
+                    Checking stock...
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             PRODUCT DETAILS
+        ========================== -->
+
+        <section
+            class="product-description-section"
+        >
+
+            <div
+                class="section-heading"
+            >
+
+                <p>
+                    PRODUCT INFORMATION
+                </p>
+
+                <h2>
+                    Product Details
+                </h2>
+
+            </div>
+
+
+            <div
+                id="fullDescription"
+                class="
+                    product-full-description
+                "
+            >
+                Loading product details...
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             RELATED PRODUCTS
+        ========================== -->
+
+        <section
+            class="related-products-section"
+        >
+
+            <div
+                class="section-heading
+                related-heading"
+            >
+
+                <div>
+
+                    <p>
+                        YOU MAY ALSO LIKE
+                    </p>
+
+                    <h2>
+                        Related Products
+                    </h2>
+
+                </div>
+
+
+                <a
+                    href="shop.html"
+                    class="view-all-link"
+                >
+                    View All →
+                </a>
+
+            </div>
+
+
+            <div
+                id="relatedProducts"
+                class="
+                    related-products-grid
+                "
+            >
+
+                <div class="related-loading">
+
+                    Loading related products...
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-brand">
+
+            <h2>
+                NovaCart
+            </h2>
+
+            <p>
+                Your modern online shopping destination.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+
+            <div>
+
+                <h3>
+                    Shop
+                </h3>
+
+                <a href="shop.html">
+                    All Products
+                </a>
+
+                <a href="wishlist.html">
+                    Wishlist
+                </a>
+
+                <a href="cart.html">
+                    Cart
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Account
+                </h3>
+
+                <a href="profile.html">
+                    Profile
+                </a>
+
+                <a href="orders.html">
+                    My Orders
+                </a>
+
+                <a href="addresses.html">
+                    My Addresses
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Help
+                </h3>
+
+                <a href="#">
+                    Contact
+                </a>
+
+                <a href="#">
+                    Shipping
+                </a>
+
+                <a href="#">
+                    Returns
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            © 2026 NovaCart.
+            All rights reserved.
+
+        </div>
+
+    </footer>
+
+
+
+    <script
+        src="js/product-details.js"
+    ></script>
+
+</body>
+
+</html>

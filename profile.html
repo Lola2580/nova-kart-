@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Profile - NovaCart</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/profile.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <div class="logo">
+            NovaCart
+        </div>
+
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search products..."
+            >
+
+            <button
+                id="searchBtn"
+                type="button"
+            >
+                Search
+            </button>
+
+        </div>
+
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+
+            <a href="shop.html">
+                Shop
+            </a>
+
+
+            <a href="wishlist.html">
+                ♥ Wishlist
+                <span id="wishlistCount">
+                    0
+                </span>
+            </a>
+
+
+            <a href="orders.html">
+                Orders
+            </a>
+
+
+            <a
+                href="profile.html"
+                class="active"
+            >
+                Profile
+            </a>
+
+
+            <a href="cart.html">
+                🛒 Cart
+                <span id="cartCount">
+                    0
+                </span>
+            </a>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================
+         PROFILE PAGE
+    ========================== -->
+
+    <main class="profile-page">
+
+
+        <!-- PAGE HEADING -->
+
+        <div class="profile-heading">
+
+            <p>
+                MY ACCOUNT
+            </p>
+
+            <h1>
+                My Profile
+            </h1>
+
+        </div>
+
+
+
+        <!-- =========================
+             PROFILE LAYOUT
+        ========================== -->
+
+        <div class="profile-layout">
+
+
+            <!-- =====================
+                 PROFILE CARD
+            ====================== -->
+
+            <section class="profile-card">
+
+
+                <!-- PROFILE TOP -->
+
+                <div class="profile-top">
+
+
+                    <!-- PROFILE IMAGE -->
+
+                   <div class="profile-avatar">
+
+                    👤
+                   
+                   </div>
+
+
+                    <!-- PROFILE NAME -->
+
+                    <div>
+
+                        <h2 id="profileName">
+                            Loading...
+                        </h2>
+
+                        <p id="profileEmail">
+                            Loading...
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-divider"></div>
+
+
+
+                <!-- =====================
+                     PROFILE DETAILS
+                ====================== -->
+
+                <div class="profile-details">
+
+
+                    <!-- FULL NAME -->
+
+                    <div class="profile-detail">
+
+                        <span class="detail-label">
+                            Full Name
+                        </span>
+
+                        <strong id="detailName">
+                            —
+                        </strong>
+
+                    </div>
+
+
+
+                    <!-- EMAIL -->
+
+                    <div class="profile-detail">
+
+                        <span class="detail-label">
+                            Email
+                        </span>
+
+                        <strong id="detailEmail">
+                            —
+                        </strong>
+
+                    </div>
+
+
+
+                    <!-- PHONE -->
+
+                    <div class="profile-detail">
+
+                        <span class="detail-label">
+                            Phone
+                        </span>
+
+                        <strong id="detailPhone">
+                            —
+                        </strong>
+
+                    </div>
+
+
+
+                    <!-- STATUS -->
+
+                    <div class="profile-detail">
+
+                        <span class="detail-label">
+                            Account Status
+                        </span>
+
+                        <strong class="status-active">
+                            Active
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- EDIT BUTTON -->
+
+                <button
+                    class="edit-profile-btn"
+                    id="editProfileBtn"
+                    type="button"
+                >
+                    ✏️ Edit Profile
+                </button>
+
+            </section>
+
+
+
+            <!-- =====================
+                 QUICK ACTIONS
+            ====================== -->
+
+            <section class="profile-actions">
+
+
+                <!-- ORDERS -->
+
+                <a
+                    href="orders.html"
+                    class="profile-action-card"
+                >
+
+                    <div class="action-icon">
+                        📦
+                    </div>
+
+                    <div class="action-content">
+
+                        <h3>
+                            My Orders
+                        </h3>
+
+                        <p>
+                            View your order history
+                        </p>
+
+                    </div>
+
+                    <span class="action-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <!-- CART -->
+
+                <a
+                    href="cart.html"
+                    class="profile-action-card"
+                >
+
+                    <div class="action-icon">
+                        🛒
+                    </div>
+
+                    <div class="action-content">
+
+                        <h3>
+                            My Cart
+                        </h3>
+
+                        <p>
+                            View products in your cart
+                        </p>
+
+                    </div>
+
+                    <span class="action-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <!-- ADDRESSES -->
+
+                <a
+                    href="addresses.html"
+                    class="profile-action-card"
+                >
+
+                    <div class="action-icon">
+                        📍
+                    </div>
+
+                    <div class="action-content">
+
+                        <h3>
+                            My Addresses
+                        </h3>
+
+                        <p>
+                            Manage your delivery addresses
+                        </p>
+
+                    </div>
+
+                    <span class="action-arrow">
+                        →
+                    </span>
+
+                </a>
+
+
+
+                <!-- WISHLIST -->
+
+                <a
+                    href="wishlist.html"
+                    class="profile-action-card"
+                >
+
+                    <div class="action-icon">
+                        ❤️
+                    </div>
+
+                    <div class="action-content">
+
+                        <h3>
+                            Wishlist
+                        </h3>
+
+                        <p>
+                            Products you've saved
+                        </p>
+
+                    </div>
+
+                    <span class="action-arrow">
+                        →
+                    </span>
+
+                </a>
+
+            </section>
+
+        </div>
+
+
+
+        <!-- =========================
+             ACCOUNT SETTINGS
+        ========================== -->
+
+        <section class="settings-card">
+
+
+            <div class="settings-heading">
+
+                <div>
+
+                    <p>
+                        ACCOUNT
+                    </p>
+
+                    <h2>
+                        Account Settings
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="settings-list">
+
+
+                <!-- CHANGE PASSWORD -->
+
+                <button
+                    class="setting-item"
+                    id="changePasswordBtn"
+                    type="button"
+                >
+
+                    <div class="setting-icon">
+                        🔐
+                    </div>
+
+                    <div class="setting-content">
+
+                        <strong>
+                            Change Password
+                        </strong>
+
+                        <span>
+                            Update your account password
+                        </span>
+
+                    </div>
+
+                    <span class="setting-arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+
+                <!-- LOGOUT -->
+
+                <button
+                    class="setting-item logout-item"
+                    id="logoutBtn"
+                    type="button"
+                >
+
+                    <div class="setting-icon">
+                        🚪
+                    </div>
+
+                    <div class="setting-content">
+
+                        <strong>
+                            Logout
+                        </strong>
+
+                        <span>
+                            Sign out from your account
+                        </span>
+
+                    </div>
+
+                    <span class="setting-arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================
+         EDIT PROFILE MODAL
+    ========================== -->
+
+    <div
+        class="modal-overlay"
+        id="profileModal"
+    >
+
+        <div class="profile-modal">
+
+
+            <!-- CLOSE -->
+
+            <button
+                class="modal-close"
+                id="closeModal"
+                type="button"
+            >
+                ×
+            </button>
+
+
+
+            <!-- MODAL TITLE -->
+
+            <p class="modal-label">
+                PROFILE
+            </p>
+
+            <h2>
+                Edit Profile
+            </h2>
+
+
+
+           <form id="profileForm">
+
+
+    <!-- NAME -->
+
+    <div class="modal-form-group">
+
+        <label for="editName">
+            Full Name
+        </label>
+
+        <input
+            type="text"
+            id="editName"
+            placeholder="Enter your full name"
+            required
+        >
+
+    </div>
+
+
+    <!-- PHONE -->
+
+    <div class="modal-form-group">
+
+        <label for="editPhone">
+            Mobile Number
+        </label>
+
+        <input
+            type="tel"
+            id="editPhone"
+            maxlength="10"
+            inputmode="numeric"
+            placeholder="Enter 10-digit mobile number"
+        >
+
+    </div>
+
+
+    <!-- SAVE -->
+
+    <button
+        type="submit"
+        class="save-profile-btn"
+    >
+        Save Changes
+    </button>
+
+</form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+
+        <div class="footer-brand">
+
+            <h2>
+                NovaCart
+            </h2>
+
+            <p>
+                Your modern online shopping destination.
+            </p>
+
+        </div>
+
+
+
+        <div class="footer-links">
+
+
+            <!-- SHOP -->
+
+            <div>
+
+                <h3>
+                    Shop
+                </h3>
+
+                <a href="shop.html">
+                    All Products
+                </a>
+
+                <a href="wishlist.html">
+                    Wishlist
+                </a>
+
+                <a href="cart.html">
+                    Cart
+                </a>
+
+            </div>
+
+
+
+            <!-- ACCOUNT -->
+
+            <div>
+
+                <h3>
+                    Account
+                </h3>
+
+                <a href="profile.html">
+                    Profile
+                </a>
+
+                <a href="orders.html">
+                    My Orders
+                </a>
+
+                <a href="addresses.html">
+                    My Addresses
+                </a>
+
+            </div>
+
+
+
+            <!-- HELP -->
+
+            <div>
+
+                <h3>
+                    Help
+                </h3>
+
+                <a href="#">
+                    Contact
+                </a>
+
+                <a href="#">
+                    Shipping
+                </a>
+
+                <a href="#">
+                    Returns
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="footer-bottom">
+
+            © 2026 NovaCart.
+            All rights reserved.
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =========================
+         PROFILE JS
+    ========================== -->
+
+    <script src="js/profile.js"></script>
+
+
+</body>
+
+</html>

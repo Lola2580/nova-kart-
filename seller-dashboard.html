@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Seller Dashboard - NovaCart</title>
+
+    <link
+        rel="stylesheet"
+        href="css/seller-dashboard.css"
+    >
+
+</head>
+
+
+<body>
+
+    <main class="seller-dashboard">
+
+
+        <!-- HEADER -->
+
+        <section class="dashboard-header">
+
+            <div>
+
+                <p class="dashboard-label">
+                    SELLER CENTER
+                </p>
+
+                <h1>
+                    Seller Dashboard
+                </h1>
+
+                <span>
+                    Manage your store and products.
+                </span>
+
+            </div>
+
+
+            <a
+                href="index.html"
+                class="store-btn"
+            >
+                View Store →
+            </a>
+
+        </section>
+
+
+
+        <!-- STORE STATUS -->
+
+        <section class="store-status-card">
+
+            <div>
+
+                <p>
+                    STORE
+                </p>
+
+                <h2 id="storeName">
+                    Loading...
+                </h2>
+
+                <span id="storeStatus">
+                    Checking status...
+                </span>
+
+            </div>
+
+
+            <div
+                id="statusBadge"
+                class="status-badge"
+            >
+                Pending
+            </div>
+
+        </section>
+
+
+
+        <!-- STATS -->
+
+        <section class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <span>
+                    Total Products
+                </span>
+
+                <strong id="totalProducts">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>
+                    Approved
+                </span>
+
+                <strong id="approvedProducts">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>
+                    Pending
+                </span>
+
+                <strong id="pendingProducts">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>
+                    Rejected
+                </span>
+
+                <strong id="rejectedProducts">
+                    0
+                </strong>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ACTIONS -->
+
+        <section class="dashboard-actions">
+
+            <div class="action-card">
+
+                <div class="action-icon">
+                    ＋
+                </div>
+
+                <h2>
+                    Add New Product
+                </h2>
+
+                <p>
+                    Add product details, images,
+                    videos, colors, variants and specifications.
+                </p>
+
+                <button
+                    type="button"
+                    id="addProductBtn"
+                    class="primary-btn"
+                >
+                    Add Product
+                </button>
+
+            </div>
+
+
+            <div class="action-card">
+
+                <div class="action-icon">
+                    ▣
+                </div>
+
+                <h2>
+                    My Products
+                </h2>
+
+                <p>
+                    View and manage products added to your store.
+                </p>
+
+                <button
+                    type="button"
+                    id="myProductsBtn"
+                    class="secondary-btn"
+                >
+                    View Products
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- RECENT PRODUCTS -->
+
+        <section class="products-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <p>
+                        PRODUCTS
+                    </p>
+
+                    <h2>
+                        Recent Products
+                    </h2>
+
+                </div>
+
+                <button
+                    type="button"
+                    id="refreshProductsBtn"
+                    class="refresh-btn"
+                >
+                    Refresh
+                </button>
+
+            </div>
+
+
+            <div
+                id="sellerProducts"
+                class="seller-products"
+            >
+
+                <div class="loading">
+                    Loading products...
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <script
+        src="js/seller-dashboard.js"
+    ></script>
+
+</body>
+
+</html>

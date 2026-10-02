@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout - NovaCart</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* =========================
+           CHECKOUT PAGE
+        ========================= */
+
+        .checkout-page {
+            width: 88%;
+            margin: 50px auto 100px;
+        }
+
+        .checkout-header {
+            margin-bottom: 35px;
+        }
+
+        .checkout-header p {
+            color: #6c4cff;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .checkout-header h1 {
+            font-size: 42px;
+            letter-spacing: -2px;
+        }
+
+        .checkout-layout {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 30px;
+            align-items: start;
+        }
+
+        /* =========================
+           CHECKOUT BOX
+        ========================= */
+
+        .checkout-box {
+            background: white;
+            border: 1px solid #e8e8e8;
+            border-radius: 20px;
+            padding: 28px;
+            margin-bottom: 20px;
+        }
+
+        .checkout-box h2 {
+            font-size: 20px;
+            margin-bottom: 22px;
+        }
+
+        .checkout-box-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 22px;
+        }
+
+        .checkout-number {
+            width: 32px;
+            height: 32px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #111;
+            color: white;
+
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        /* =========================
+           FORM
+        ========================= */
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+
+            width: 100%;
+
+            border: 1px solid #ddd;
+
+            border-radius: 11px;
+
+            outline: none;
+
+            background: white;
+
+            font-family: inherit;
+
+            font-size: 14px;
+
+            transition: 0.2s;
+        }
+
+        .form-group input,
+        .form-group select {
+            height: 48px;
+            padding: 0 14px;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            padding: 14px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #6c4cff;
+
+            box-shadow:
+                0 0 0 4px rgba(108, 76, 255, 0.08);
+        }
+
+        /* =========================
+           PAYMENT
+        ========================= */
+
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .payment-option {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+
+            padding: 15px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .payment-option:hover {
+            border-color: #6c4cff;
+            background: #faf9ff;
+        }
+
+        .payment-option input {
+            accent-color: #6c4cff;
+        }
+
+        .payment-icon {
+            font-size: 22px;
+        }
+
+        .payment-info strong {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .payment-info span {
+            font-size: 11px;
+            color: #888;
+        }
+
+        /* =========================
+           ORDER SUMMARY
+        ========================= */
+
+        .order-summary {
+            position: sticky;
+            top: 100px;
+
+            background: white;
+
+            border: 1px solid #e8e8e8;
+
+            border-radius: 20px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.06);
+        }
+
+        .order-summary h2 {
+            font-size: 21px;
+            margin-bottom: 22px;
+        }
+
+        /* =========================
+           ORDER ITEMS
+        ========================= */
+
+        .checkout-items {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            max-height: 330px;
+
+            overflow-y: auto;
+
+            padding-right: 4px;
+
+            margin-bottom: 20px;
+        }
+
+        .checkout-item {
+            display: grid;
+
+            grid-template-columns: 58px 1fr auto;
+
+            gap: 12px;
+
+            align-items: center;
+        }
+
+        .checkout-item-image {
+            width: 58px;
+            height: 58px;
+
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            background: #f5f5f6;
+        }
+
+        .checkout-item-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+        .checkout-item-info h3 {
+            font-size: 13px;
+
+            margin-bottom: 4px;
+        }
+
+        .checkout-item-info span {
+            color: #888;
+
+            font-size: 11px;
+        }
+
+        .checkout-item-price {
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        /* =========================
+           SUMMARY ROWS
+        ========================= */
+
+        .summary-row {
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 12px 0;
+
+            border-bottom: 1px solid #eee;
+
+            font-size: 13px;
+
+            color: #666;
+        }
+
+        .summary-row strong {
+            color: #111;
+        }
+
+        .summary-total {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-top: 18px;
+
+            margin-bottom: 20px;
+        }
+
+        .summary-total span {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .summary-total strong {
+            font-size: 22px;
+        }
+
+        /* =========================
+           PLACE ORDER
+        ========================= */
+
+        .place-order-btn {
+            width: 100%;
+
+            height: 52px;
+
+            border-radius: 12px;
+
+            background: #111;
+
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            transition: 0.25s;
+        }
+
+        .place-order-btn:hover {
+            background: #6c4cff;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 25px rgba(108, 76, 255, 0.22);
+        }
+
+        .secure-note {
+            text-align: center;
+
+            color: #888;
+
+            font-size: 11px;
+
+            margin-top: 14px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .checkout-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .order-summary {
+                position: static;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .checkout-page {
+                width: 94%;
+            }
+
+            .checkout-header h1 {
+                font-size: 34px;
+            }
+
+            .checkout-box {
+                padding: 20px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header>
+
+        <div class="logo">
+            NovaCart
+        </div>
+
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search products..."
+            >
+
+            <button id="searchBtn">
+                Search
+            </button>
+
+        </div>
+
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="shop.html">
+                Shop
+            </a>
+
+            <a href="orders.html">
+                Orders
+            </a>
+
+            <a href="profile.html">
+                Profile
+            </a>
+
+            <a href="cart.html">
+                🛒 Cart
+                <span id="cartCount">0</span>
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         CHECKOUT
+    ========================= -->
+
+    <main class="checkout-page">
+
+        <div class="checkout-header">
+
+            <p>SECURE CHECKOUT</p>
+
+            <h1>
+                Complete Your Order
+            </h1>
+
+        </div>
+
+
+        <div class="checkout-layout">
+
+
+            <!-- =====================
+                 LEFT
+            ====================== -->
+
+            <section>
+
+
+                <!-- =====================
+     DELIVERY INFORMATION
+====================== -->
+
+<div class="checkout-box">
+
+    <div class="checkout-box-title">
+
+        <div class="checkout-number">
+            1
+        </div>
+
+        <h2>
+            Delivery Information
+        </h2>
+
+    </div>
+
+
+    <!-- SAVED ADDRESS -->
+
+    <div
+        id="checkoutAddressSection"
+        class="checkout-address-section"
+    >
+
+        <div
+            id="savedAddressContainer"
+            class="saved-address-container"
+        >
+            <div class="cart-loading">
+                Loading address...
+            </div>
+        </div>
+
+
+        <!-- CHANGE ADDRESS -->
+
+        <button
+            type="button"
+            id="changeAddressBtn"
+            class="checkout-address-btn"
+            style="display: none;"
+        >
+            Change Address
+        </button>
+
+
+        <!-- ADD NEW ADDRESS -->
+
+        <button
+            type="button"
+            id="addAddressBtn"
+            class="checkout-address-btn secondary"
+        >
+            + Add New Address
+        </button>
+
+    </div>
+
+
+    <!-- =====================
+         SELECT ADDRESS
+    ====================== -->
+
+    <div
+        id="addressSelector"
+        class="checkout-address-selector"
+        style="display: none;"
+    >
+
+        <h3>
+            Select Delivery Address
+        </h3>
+
+
+        <div
+            id="addressList"
+            class="checkout-address-list"
+        ></div>
+
+
+        <button
+            type="button"
+            id="closeAddressSelector"
+            class="checkout-address-btn secondary"
+        >
+            Close
+        </button>
+
+    </div>
+
+
+    <!-- =====================
+         ADD NEW ADDRESS
+    ====================== -->
+
+    <div
+        id="checkoutNewAddress"
+        class="checkout-new-address"
+        style="display: none;"
+    >
+
+        <h3>
+            Add New Address
+        </h3>
+
+
+        <div class="form-row">
+
+
+            <div class="form-group">
+
+                <label for="fullName">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="fullName"
+                    placeholder="Enter your full name"
+                    autocomplete="name"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="phone">
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    maxlength="10"
+                    inputmode="numeric"
+                    placeholder="10-digit mobile number"
+                >
+
+            </div>
+
+
+            <div class="form-group full">
+
+                <label for="address">
+                    Address
+                </label>
+
+                <textarea
+                    id="address"
+                    placeholder="House no, street, area..."
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="city">
+                    City
+                </label>
+
+                <input
+                    type="text"
+                    id="city"
+                    placeholder="Enter city"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="state">
+                    State
+                </label>
+
+                <input
+                    type="text"
+                    id="state"
+                    placeholder="Enter state"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="pincode">
+                    Pincode
+                </label>
+
+                <input
+                    type="text"
+                    id="pincode"
+                    maxlength="6"
+                    inputmode="numeric"
+                    placeholder="6-digit pincode"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="country">
+                    Country
+                </label>
+
+                <select id="country">
+
+                    <option value="India">
+                        India
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+
+        <div class="checkout-address-actions">
+
+            <button
+                type="button"
+                id="saveCheckoutAddress"
+                class="checkout-address-btn"
+            >
+                Save Address
+            </button>
+
+
+            <button
+                type="button"
+                id="cancelCheckoutAddress"
+                class="checkout-address-btn secondary"
+            >
+                Cancel
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+                <!-- PAYMENT -->
+                <div class="checkout-box">
+
+                    <div class="checkout-box-title">
+
+                        <div class="checkout-number">
+                            2
+                        </div>
+
+                        <h2>
+                            Payment Method
+                        </h2>
+
+                    </div>
+
+
+                    <div class="payment-options">
+
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="payment"
+                                value="cod"
+                                checked
+                            >
+
+                            <span class="payment-icon">
+                                💵
+                            </span>
+
+                            <span class="payment-info">
+
+                                <strong>
+                                    Cash on Delivery
+                                </strong>
+
+                                <span>
+                                    Pay when your order arrives
+                                </span>
+
+                            </span>
+
+                        </label>
+
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="payment"
+                                value="online"
+                            >
+
+                            <span class="payment-icon">
+                                💳
+                            </span>
+
+                            <span class="payment-info">
+
+                                <strong>
+                                    Online Payment
+                                </strong>
+
+                                <span>
+                                    Pay securely online
+                                </span>
+
+                            </span>
+
+                        </label>
+
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =====================
+                 RIGHT
+            ====================== -->
+
+            <aside class="order-summary">
+
+                <h2>
+                    Your Order
+                </h2>
+
+
+                <!-- Dynamic items -->
+
+                <div
+                    id="checkoutItems"
+                    class="checkout-items"
+                >
+
+                    <div class="cart-loading">
+                        Loading...
+                    </div>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Items
+                    </span>
+
+                    <strong id="summaryItems">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <strong id="subtotal">
+                        ₹0.00
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Shipping
+                    </span>
+
+                    <strong id="shipping">
+                        FREE
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="grandTotal">
+                        ₹0.00
+                    </strong>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="place-order-btn"
+                    id="placeOrderBtn"
+                >
+                    Place Order →
+                </button>
+
+
+                <p class="secure-note">
+                    🔒 Your information is protected.
+                </p>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <div class="footer-brand">
+
+            <h2>
+                NovaCart
+            </h2>
+
+            <p>
+                Your modern online shopping destination.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <div>
+
+                <h3>Shop</h3>
+
+                <a href="shop.html">
+                    All Products
+                </a>
+
+                <a href="#">
+                    Mobiles
+                </a>
+
+                <a href="#">
+                    Laptops
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>Account</h3>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+                <a href="register.html">
+                    Register
+                </a>
+
+                <a href="orders.html">
+                    My Orders
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>Help</h3>
+
+                <a href="#">
+                    Contact
+                </a>
+
+                <a href="#">
+                    Shipping
+                </a>
+
+                <a href="#">
+                    Returns
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            © 2026 NovaCart. All rights reserved.
+
+        </div>
+
+    </footer>
+
+
+    <!-- Checkout JS baad mein -->
+    <script src="js/checkout.js"></script>
+
+</body>
+
+</html>

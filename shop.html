@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Shop - NovaCart</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/shop.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <div class="logo">
+            NovaCart
+        </div>
+
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search products..."
+            >
+
+            <button id="searchBtn">
+                Search
+            </button>
+
+        </div>
+
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a
+                href="shop.html"
+                class="active"
+            >
+                Shop
+            </a>
+
+            <a href="wishlist.html">
+                ♡ Wishlist
+                <span id="wishlistCount">0</span>
+            </a>
+
+            <a href="orders.html">
+                Orders
+            </a>
+
+            <a href="profile.html">
+                Profile
+            </a>
+
+            <a href="cart.html">
+                🛒 Cart
+                <span id="cartCount">0</span>
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         SHOP PAGE
+    ========================== -->
+
+    <main class="shop-page">
+
+
+        <!-- SHOP HEADER -->
+
+        <section class="shop-heading">
+
+            <div>
+
+                <p class="shop-label">
+                    NOVACART STORE
+                </p>
+
+                <h1>
+                    Shop
+                </h1>
+
+                <span>
+                    Discover products you'll love.
+                </span>
+
+            </div>
+
+
+            <div class="product-count-box">
+
+                <strong id="productCount">
+                    0
+                </strong>
+
+                <span>
+                    Products
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FILTER BAR
+        ========================== -->
+
+        <section class="shop-toolbar">
+
+
+            <!-- CATEGORY -->
+
+            <div class="filter-group">
+
+                <label for="categoryFilter">
+                    Category
+                </label>
+
+                <select id="categoryFilter">
+
+                    <option value="all">
+                        All Categories
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- SORT -->
+
+            <div class="filter-group">
+
+                <label for="sortFilter">
+                    Sort
+                </label>
+
+                <select id="sortFilter">
+
+                    <option value="default">
+                        Recommended
+                    </option>
+
+                    <option value="price-low">
+                        Price: Low to High
+                    </option>
+
+                    <option value="price-high">
+                        Price: High to Low
+                    </option>
+
+                    <option value="newest">
+                        Newest
+                    </option>
+
+                    <option value="name">
+                        Name: A to Z
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- VIEW -->
+
+            <div class="view-buttons">
+
+                <button
+                    id="gridViewBtn"
+                    class="view-btn active"
+                    type="button"
+                >
+                    ▦
+                </button>
+
+                <button
+                    id="listViewBtn"
+                    class="view-btn"
+                    type="button"
+                >
+                    ☰
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PRODUCTS
+        ========================== -->
+
+        <section
+            id="products"
+            class="products-grid"
+        >
+
+            <div class="products-loading">
+
+                <div class="loading-spinner"></div>
+
+                <p>
+                    Loading products...
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             EMPTY SEARCH
+        ========================== -->
+
+        <section
+            id="emptyProducts"
+            class="empty-products"
+            style="display: none;"
+        >
+
+            <div class="empty-product-icon">
+                🔍
+            </div>
+
+            <h2>
+                No Products Found
+            </h2>
+
+            <p>
+                Try another search or category.
+            </p>
+
+            <button
+                id="clearFiltersBtn"
+                type="button"
+            >
+                Clear Filters
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         PRODUCT QUICK VIEW MODAL
+    ========================== -->
+
+    <div
+        id="productModal"
+        class="product-modal-overlay"
+    >
+
+        <div class="product-modal">
+
+            <button
+                id="closeProductModal"
+                class="modal-close"
+                type="button"
+            >
+                ×
+            </button>
+
+
+            <!-- IMAGE -->
+
+            <div class="modal-product-image">
+
+                <img
+                    id="modalProductImage"
+                    src=""
+                    alt="Product"
+                >
+
+            </div>
+
+
+            <!-- DETAILS -->
+
+            <div class="modal-product-details">
+
+                <p class="modal-category">
+                    PRODUCT
+                </p>
+
+                <h2 id="modalProductName">
+                    Product Name
+                </h2>
+
+                <p
+                    id="modalProductDescription"
+                    class="modal-description"
+                >
+                    Product description
+                </p>
+
+
+                <div class="modal-price">
+
+                    ₹<span id="modalProductPrice">
+                        0.00
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="modalProductStock"
+                    class="modal-stock"
+                >
+                    In Stock
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        id="modalWishlistBtn"
+                        class="modal-wishlist-btn"
+                        type="button"
+                    >
+                        ♡ Wishlist
+                    </button>
+
+                    <button
+                        id="modalCartBtn"
+                        class="modal-cart-btn"
+                        type="button"
+                    >
+                        🛒 Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-brand">
+
+            <h2>
+                NovaCart
+            </h2>
+
+            <p>
+                Your modern online shopping destination.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <div>
+
+                <h3>
+                    Shop
+                </h3>
+
+                <a href="shop.html">
+                    All Products
+                </a>
+
+                <a href="wishlist.html">
+                    Wishlist
+                </a>
+
+                <a href="cart.html">
+                    Cart
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Account
+                </h3>
+
+                <a href="profile.html">
+                    Profile
+                </a>
+
+                <a href="orders.html">
+                    My Orders
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Help
+                </h3>
+
+                <a href="#">
+                    Contact
+                </a>
+
+                <a href="#">
+                    Shipping
+                </a>
+
+                <a href="#">
+                    Returns
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            © 2026 NovaCart.
+            All rights reserved.
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/shop.js"></script>
+
+</body>
+
+</html>

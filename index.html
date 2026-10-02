@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NovaCart - Online Store</title>
+
+    <!-- CSS baad mein -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <header>
+
+        <!-- Logo -->
+        <div class="logo">
+            NovaCart
+        </div>
+
+        <!-- Search -->
+        <div class="search-box">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search products..."
+            >
+
+            <button id="searchBtn">
+                Search
+            </button>
+        </div>
+
+        <!-- Navigation -->
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="orders.html">Orders</a>
+            <a href="profile.html">Profile</a>
+
+            <a href="login.html">
+                Login
+            </a>
+
+            <a href="cart.html">
+                🛒 Cart
+                <span id="cartCount">0</span>
+            </a>
+        </nav>
+
+    </header>
+
+
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p>NEW COLLECTION</p>
+
+            <h1>
+                Shop smarter.
+                <br>
+                Live better.
+            </h1>
+
+            <p>
+                Discover premium products at amazing prices.
+            </p>
+
+            <a href="shop.html">
+                <button>
+                    Shop Now →
+                </button>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CATEGORIES ================= -->
+    <section class="categories">
+
+        <div class="section-title">
+            <p>EXPLORE</p>
+            <h2>Shop by Category</h2>
+        </div>
+
+        <div class="category-container">
+
+            <div class="category-card">
+                <div class="category-image">
+                    📱
+                </div>
+                <h3>Mobiles</h3>
+            </div>
+
+            <div class="category-card">
+                <div class="category-image">
+                    💻
+                </div>
+                <h3>Laptops</h3>
+            </div>
+
+            <div class="category-card">
+                <div class="category-image">
+                    🎧
+                </div>
+                <h3>Accessories</h3>
+            </div>
+
+            <div class="category-card">
+                <div class="category-image">
+                    👕
+                </div>
+                <h3>Fashion</h3>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FEATURED PRODUCTS ================= -->
+    <section class="featured-products">
+
+        <div class="section-title">
+
+            <p>OUR COLLECTION</p>
+
+            <h2>
+                Featured Products
+            </h2>
+
+        </div>
+
+
+        <!-- Product horizontal slider -->
+        <div class="product-slider">
+
+            <button
+                class="slider-btn"
+                id="prevProducts"
+            >
+                ←
+            </button>
+
+
+            <div
+                class="product-container"
+                id="productContainer"
+            >
+
+                <!-- Products JavaScript/API se aayenge -->
+
+            </div>
+
+
+            <button
+                class="slider-btn"
+                id="nextProducts"
+            >
+                →
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PROMO SECTION ================= -->
+    <section class="promo">
+
+        <div class="promo-content">
+
+            <p>LIMITED OFFER</p>
+
+            <h2>
+                Upgrade your everyday.
+            </h2>
+
+            <p>
+                Premium products. Better prices.
+            </p>
+
+            <a href="shop.html">
+                <button>
+                    Explore Deals
+                </button>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+
+        <div class="footer-brand">
+            <h2>NovaCart</h2>
+
+            <p>
+                Your modern online shopping destination.
+            </p>
+        </div>
+
+
+        <div class="footer-links">
+
+            <div>
+                <h3>Shop</h3>
+
+                <a href="shop.html">
+                    All Products
+                </a>
+
+                <a href="#">
+                    Mobiles
+                </a>
+
+                <a href="#">
+                    Laptops
+                </a>
+
+                <a href="#">
+                    Fashion
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>Account</h3>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+                <a href="register.html">
+                    Register
+                </a>
+
+                <a href="orders.html">
+                    My Orders
+                </a>
+
+                <a href="profile.html">
+                    Profile
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>Help</h3>
+
+                <a href="#">
+                    Contact
+                </a>
+
+                <a href="#">
+                    Shipping
+                </a>
+
+                <a href="#">
+                    Returns
+                </a>
+
+                <a href="#">
+                    Privacy
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 NovaCart. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript baad mein -->
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>

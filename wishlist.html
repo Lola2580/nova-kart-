@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Wishlist - NovaCart</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="css/wishlist.css"
+    >
+
+</head>
+
+<body>
+
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+
+        <div class="logo">
+            NovaCart
+        </div>
+
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search products..."
+            >
+
+            <button
+                id="searchBtn"
+                type="button"
+            >
+                Search
+            </button>
+
+        </div>
+
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="shop.html">
+                Shop
+            </a>
+
+            <a
+                href="wishlist.html"
+                class="active"
+            >
+                ♥ Wishlist
+                <span id="wishlistCount">
+                    0
+                </span>
+            </a>
+
+            <a href="orders.html">
+                Orders
+            </a>
+
+            <a href="profile.html">
+                Profile
+            </a>
+
+            <a href="cart.html">
+                🛒 Cart
+                <span id="cartCount">
+                    0
+                </span>
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         WISHLIST PAGE
+    ========================== -->
+
+    <main class="wishlist-page">
+
+
+        <!-- PAGE HEADER -->
+
+        <section class="wishlist-heading">
+
+            <div>
+
+                <p>
+                    YOUR SAVED PRODUCTS
+                </p>
+
+                <h1>
+                    My Wishlist
+                </h1>
+
+                <span>
+                    Products you've saved for later.
+                </span>
+
+            </div>
+
+
+            <div class="wishlist-count-box">
+
+                <strong id="wishlistTotal">
+                    0
+                </strong>
+
+                <span>
+                    Saved Items
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             WISHLIST TOOLBAR
+        ========================== -->
+
+        <section class="wishlist-toolbar">
+
+            <div class="wishlist-search">
+
+                <input
+                    type="text"
+                    id="wishlistSearch"
+                    placeholder="Search your wishlist..."
+                >
+
+            </div>
+
+
+            <select id="wishlistSort">
+
+                <option value="default">
+                    Recently Added
+                </option>
+
+                <option value="price-low">
+                    Price: Low to High
+                </option>
+
+                <option value="price-high">
+                    Price: High to Low
+                </option>
+
+                <option value="name">
+                    Name: A to Z
+                </option>
+
+            </select>
+
+        </section>
+
+
+        <!-- =========================
+             WISHLIST PRODUCTS
+        ========================== -->
+
+        <section
+            id="wishlistProducts"
+            class="wishlist-grid"
+        >
+
+            <div class="wishlist-loading">
+
+                <div class="loading-spinner"></div>
+
+                <p>
+                    Loading your wishlist...
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             EMPTY WISHLIST
+        ========================== -->
+
+        <section
+            id="emptyWishlist"
+            class="empty-wishlist"
+            style="display: none;"
+        >
+
+            <div class="empty-wishlist-icon">
+                ♡
+            </div>
+
+            <h2>
+                Your Wishlist Is Empty
+            </h2>
+
+            <p>
+                Save products here and find them easily later.
+            </p>
+
+            <button
+                id="shopNowBtn"
+                type="button"
+            >
+                Continue Shopping →
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         PRODUCT QUICK VIEW MODAL
+    ========================== -->
+
+    <div
+        id="wishlistProductModal"
+        class="wishlist-modal-overlay"
+    >
+
+        <div class="wishlist-modal">
+
+            <button
+                id="closeWishlistModal"
+                class="modal-close"
+                type="button"
+            >
+                ×
+            </button>
+
+
+            <div class="modal-product-image">
+
+                <img
+                    id="modalWishlistImage"
+                    src=""
+                    alt="Product"
+                >
+
+            </div>
+
+
+            <div class="modal-product-info">
+
+                <p class="modal-category">
+                    PRODUCT
+                </p>
+
+                <h2 id="modalWishlistName">
+                    Product Name
+                </h2>
+
+                <p
+                    id="modalWishlistDescription"
+                    class="modal-description"
+                >
+                    Product description
+                </p>
+
+
+                <div class="modal-price">
+
+                    ₹<span id="modalWishlistPrice">
+                        0.00
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="modalWishlistStock"
+                    class="modal-stock"
+                >
+                    In Stock
+                </div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        id="modalRemoveWishlist"
+                        class="remove-wishlist-btn"
+                        type="button"
+                    >
+                        ♥ Remove
+                    </button>
+
+
+                    <button
+                        id="modalAddCart"
+                        class="add-cart-modal-btn"
+                        type="button"
+                    >
+                        🛒 Add to Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-brand">
+
+            <h2>
+                NovaCart
+            </h2>
+
+            <p>
+                Your modern online shopping destination.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <div>
+
+                <h3>
+                    Shop
+                </h3>
+
+                <a href="shop.html">
+                    All Products
+                </a>
+
+                <a href="wishlist.html">
+                    Wishlist
+                </a>
+
+                <a href="cart.html">
+                    Cart
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Account
+                </h3>
+
+                <a href="profile.html">
+                    Profile
+                </a>
+
+                <a href="orders.html">
+                    My Orders
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Help
+                </h3>
+
+                <a href="#">
+                    Contact
+                </a>
+
+                <a href="#">
+                    Shipping
+                </a>
+
+                <a href="#">
+                    Returns
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            © 2026 NovaCart.
+            All rights reserved.
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/wishlist.js"></script>
+
+</body>
+
+</html>

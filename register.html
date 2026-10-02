@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account - NovaCart</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* =========================
+           AUTH PAGE
+        ========================= */
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                radial-gradient(
+                    circle at 10% 20%,
+                    #ddd6ff,
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 90% 80%,
+                    #cfc7ff,
+                    transparent 35%
+                ),
+                #f7f7f8;
+        }
+
+        .auth-page {
+            width: 100%;
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 450px;
+
+            padding: 42px;
+
+            background: rgba(255, 255, 255, 0.88);
+
+            border: 1px solid rgba(255, 255, 255, 0.8);
+
+            border-radius: 28px;
+
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.12);
+
+            backdrop-filter: blur(20px);
+        }
+
+        .auth-logo {
+            text-align: center;
+
+            font-size: 26px;
+
+            font-weight: 800;
+
+            margin-bottom: 30px;
+        }
+
+        .auth-logo span {
+            color: #6c4cff;
+        }
+
+        .auth-title {
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+        .auth-title h1 {
+            font-size: 30px;
+
+            letter-spacing: -1px;
+
+            margin-bottom: 8px;
+        }
+
+        .auth-title p {
+            color: #777;
+
+            font-size: 13px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            margin-bottom: 8px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .form-group input {
+            width: 100%;
+
+            height: 48px;
+
+            padding: 0 15px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 12px;
+
+            outline: none;
+
+            background: white;
+
+            font-size: 14px;
+
+            transition: 0.2s;
+        }
+
+        .form-group input:focus {
+            border-color: #6c4cff;
+
+            box-shadow:
+                0 0 0 4px rgba(108, 76, 255, 0.08);
+        }
+
+        .password-input {
+            padding-right: 50px !important;
+        }
+
+        .show-password {
+            position: absolute;
+
+            right: 12px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            background: transparent;
+
+            color: #777;
+
+            font-size: 18px;
+        }
+
+        .show-password:hover {
+            color: #6c4cff;
+        }
+
+        .auth-button {
+            width: 100%;
+
+            height: 50px;
+
+            margin-top: 8px;
+
+            border-radius: 12px;
+
+            background: #111;
+
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            transition: 0.25s;
+        }
+
+        .auth-button:hover {
+            background: #6c4cff;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 25px rgba(108, 76, 255, 0.25);
+        }
+
+        .auth-button:disabled {
+            opacity: 0.6;
+
+            cursor: not-allowed;
+
+            transform: none;
+        }
+
+        .auth-message {
+            display: none;
+
+            padding: 12px;
+
+            margin-bottom: 18px;
+
+            border-radius: 10px;
+
+            font-size: 13px;
+
+            text-align: center;
+        }
+
+        .auth-message.error {
+            display: block;
+
+            background: #fff0f0;
+
+            color: #d32f2f;
+        }
+
+        .auth-message.success {
+            display: block;
+
+            background: #effff4;
+
+            color: #16803a;
+        }
+
+        .auth-footer {
+            text-align: center;
+
+            margin-top: 25px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid #eee;
+
+            color: #777;
+
+            font-size: 13px;
+        }
+
+        .auth-footer a {
+            color: #6c4cff;
+
+            font-weight: 700;
+        }
+
+        .auth-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .back-home {
+            display: block;
+
+            text-align: center;
+
+            margin-top: 18px;
+
+            font-size: 12px;
+
+            color: #888;
+        }
+
+        .back-home:hover {
+            color: #6c4cff;
+        }
+
+        @media (max-width: 500px) {
+
+            .auth-page {
+                padding: 15px;
+            }
+
+            .auth-card {
+                padding: 30px 22px;
+
+                border-radius: 22px;
+            }
+
+            .auth-title h1 {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <main class="auth-page">
+
+        <div class="auth-card">
+
+            <!-- Logo -->
+            <div class="auth-logo">
+                Nova<span>Cart</span>
+            </div>
+
+
+            <!-- Title -->
+            <div class="auth-title">
+
+                <h1>Create Account</h1>
+
+                <p>
+                    Join NovaCart and start shopping.
+                </p>
+
+            </div>
+
+
+            <!-- Message -->
+            <div
+                id="authMessage"
+                class="auth-message">
+            </div>
+
+
+            <!-- Register Form -->
+            <form id="registerForm">
+
+                <!-- Name -->
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your name"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Email -->
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Password -->
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            class="password-input"
+                            placeholder="Create a password"
+                            autocomplete="new-password"
+                            minlength="6"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="show-password"
+                            id="togglePassword"
+                        >
+                            👁
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Confirm Password -->
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            name="confirmPassword"
+                            class="password-input"
+                            placeholder="Confirm your password"
+                            autocomplete="new-password"
+                            minlength="6"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="show-password"
+                            id="toggleConfirmPassword"
+                        >
+                            👁
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Submit -->
+                <button
+                    type="submit"
+                    class="auth-button"
+                    id="registerButton"
+                >
+                    Create Account
+                </button>
+
+            </form>
+
+
+            <!-- Login -->
+            <div class="auth-footer">
+
+                Already have an account?
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </div>
+
+
+            <!-- Home -->
+            <a
+                href="index.html"
+                class="back-home"
+            >
+                ← Back to Home
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- Auth JS -->
+    <script src="js/auth.js"></script>
+
+</body>
+
+</html>
